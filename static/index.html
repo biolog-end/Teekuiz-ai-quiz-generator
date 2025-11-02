@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- Язык будет устанавливаться динамически -->
+<html lang="ru"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teekuiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <button id="settings-btn" data-i18n="settings">[ настройки ]</button>
+
+    <div id="settings-menu" class="hidden">
+        <div class="settings-panel">
+            <h2 data-i18n="settingsTitle">Настройки</h2>
+            <div class="setting-row">
+                <label for="sound-toggle" data-i18n="soundEffects">Звуковые эффекты</label>
+                <input type="checkbox" id="sound-toggle" checked>
+            </div>
+            <div class="setting-row">
+                <label for="language-select" data-i18n="languageLabel">Язык</label>
+                <select id="language-select">
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="button-group">
+                <button id="close-settings-btn" data-i18n="close">[ закрыть ]</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="main-container">
+
+        <!-- Экран генерации -->
+        <div id="generator-screen">
+            <pre id="logo-ascii">
+ _____          _          _     
+/__   \___  ___| | ___   _(_)____
+  / /\/ _ \/ _ \ |/ / | | | |_  /
+ / / |  __/  __/   &lt| |_| | |/ / 
+ \/   \___|\___|_|\_\\__,_|_/___|
+                                    
+            </pre>
+            <p data-i18n="aiQuizGenerator">// AI Quiz Generator</p>
+            <div class="textarea-wrapper">
+                <textarea id="prompt-input" rows="3"></textarea>
+            </div>
+            <div class="button-group">
+                <button id="generate-btn" data-i18n="generate">[ сгенерировать ]</button>
+                <button id="import-btn" data-i18n="import">[ импортировать ]</button>
+            </div>
+            <input type="file" id="file-input" accept=".json" style="display: none;">
+            <p id="status-text"></p>
+        </div>
+        
+        <!-- Стартовый экран -->
+        <div id="start-screen" class="hidden">
+            <h1 id="start-title"></h1>
+            <p id="start-description"></p>
+            <div class="button-group">
+                <button id="start-btn" data-i18n="start">[ начать ]</button>
+            </div>
+        </div>
+
+        <!-- Экран прохождения теста -->
+        <div id="quiz-screen" class="hidden">
+            <p id="quiz-progress-bar"></p>
+            <p id="quiz-progress"></p>
+            <div id="question-container">
+                <p id="question-text"></p>
+                <form id="answers-form"></form>
+            </div>
+            <div class="button-group">
+                <button id="prev-question-btn" data-i18n="back">[ назад ]</button> 
+                <button id="next-question-btn" data-i18n="next">[ далее ]</button>
+            </div>
+        </div>
+        
+        <!-- Экран результата -->
+        <div id="result-screen" class="hidden">
+            <pre id="result-ascii-art"></pre>
+            <h1 id="result-title"></h1>
+            <p id="result-description"></p>
+            <div class="button-group">
+                <button id="restart-btn" data-i18n="restart">[ пройти заново ]</button>
+                <button id="save-btn" data-i18n="saveJson">[ сохранить .json ]</button>
+            </div>
+            <div id="rarity-section" class="hidden">
+                <pre id="rarity-separator"></pre>
+                <div id="rarity-chart"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="sound.js"></script>
+    <script src="i18n.js"></script> 
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSelector = document.getElementById('language-select');
+            langSelector.value = currentLanguage;
+            setLanguage(currentLanguage); 
+            
+            langSelector.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+        });
+    </script>
+</body>
+</html>
