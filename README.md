@@ -30,7 +30,7 @@
 ### 2. Клонирование репозитория
 
 ```bash
-git clone https://github.com/your-username/teekuiz.git
+git clone https://github.com/biolog-end/Teekuiz-ai-quiz-generator
 cd teekuiz
 ```
 
