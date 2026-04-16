@@ -1,107 +1,107 @@
 # Teekuiz: AI Quiz Generator
 
-**Teekuiz** — это веб-приложение для автоматической генерации персонализированных личностных тестов в стиле [uquiz](https://uquiz.com/) с помощью нейросети Google Gemini. Просто введите любую тему, и ИИ создаст для вас уникальный тест с вопросами, результатами и даже ASCII-артом.
+**Teekuiz** is a web application for automatically generating personalized personality quizzes in the style of [uquiz](https://uquiz.com/) using the Google Gemini neural network. Just enter any topic, and the AI will create a unique quiz for you with questions, results, and even ASCII art.
 
-## 🚀 Ключевые возможности
+## 🚀 Key Features
 
-*   **Генерация на любую тему**: Создавайте тесты о чем угодно — от "Какой вы вид хлеба?" до "Кто вы из персонажей любимого аниме?".
-*   **Динамический интерфейс**: Минималистичный ретро-интерфейс в стиле терминала, который полностью отрисовывается на лету на основе полученных от ИИ данных.
-*   **Многоязычность (i18n)**: Поддержка русского и английского языков как для интерфейса, так и для промптов, отправляемых нейросети.
-*   **Импорт и Экспорт**: Сохраняйте понравившиеся тесты в формате `.json` и делитесь ими с друзьями или загружайте их обратно в приложение.
-*   **Анализ редкости**: После прохождения теста вы увидите статистику редкости вашего результата, рассчитанную с помощью симуляции Монте-Карло.
-*   **Адаптивная тема**: Цвет фона может меняться в зависимости от вопроса, создавая нужную атмосферу.
-*   **Звуковые эффекты**: Небольшие звуковые эффекты для более приятного взаимодействия.
+*   **Generation on any topic**: Create quizzes about anything - from "What kind of bread are you?" to "Which character are you from your favorite anime?".
+*   **Dynamic interface**: A minimalistic terminal-style retro interface that is fully rendered on the fly based on data received from the AI.
+*   **Multilingualism (i18n)**: Support for Russian and English languages for both the interface and the prompts sent to the neural network.
+*   **Import and Export**: Save your favorite quizzes in `.json` format and share them with friends or upload them back into the app.
+*   **Rarity analysis**: After taking a quiz, you will see rarity statistics for your result, calculated using Monte Carlo simulation.
+*   **Adaptive theme**: Background color can change depending on the question, creating the right atmosphere.
+*   **Sound effects**: Small sound effects for a more pleasant interaction.
 
-## 🛠️ Технологический стек
+## 🛠️ Tech Stack
 
-*   **Бэкенд**: Python, Flask
-*   **Нейросеть**: Google Gemini API
-*   **Фронтенд**: HTML, CSS, Vanilla JavaScript (без фреймворков)
+*   **Backend**: Python, Flask
+*   **Neural Network**: Google Gemini API
+*   **Frontend**: HTML, CSS, Vanilla JavaScript (no frameworks)
 
-## ⚙️ Установка и запуск
+## ⚙️ Installation and Launch
 
-Следуйте этим шагам, чтобы запустить проект локально.
+Follow these steps to run the project locally.
 
-### 1. Предварительные требования
+### 1. Prerequisites
 
-*   Установленный Python 3.8+
-*   Менеджер пакетов `pip`
+*   Installed Python 3.8+
+*   `pip` package manager
 
-### 2. Клонирование репозитория
+### 2. Cloning the repository
 
 ```bash
 git clone https://github.com/biolog-end/Teekuiz-ai-quiz-generator
 cd teekuiz
 ```
 
-### 3. Настройка виртуального окружения
+### 3. Setting up a virtual environment
 
-Рекомендуется использовать виртуальное окружение для изоляции зависимостей.
+It is recommended to use a virtual environment to isolate dependencies.
 
 ```bash
-# Создание окружения
+# Creating the environment
 python -m venv venv
 
-# Активация (Windows)
+# Activation (Windows)
 .\venv\Scripts\activate
 
-# Активация (macOS/Linux)
+# Activation (macOS/Linux)
 source venv/bin/activate
 ```
 
-### 4. Установка зависимостей
+### 4. Installing dependencies
 
-Установите все необходимые Python-библиотеки.
+Install all necessary Python libraries.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Настройка ключа API
+### 5. API key configuration
 
-Для работы с нейросетью вам понадобится ключ Google API.
+To work with the neural network, you will need a Google API key.
 
-1.  Получите ваш API ключ в [Google AI Studio](https://aistudio.google.com/app/apikey).
-2.  Создайте файл `.env` в корневой папке проекта.
-3.  Добавьте в него ваш ключ в следующем формате:
+1.  Get your API key at [Google AI Studio](https://aistudio.google.com/app/apikey).
+2.  Create a `.env` file in the root folder of the project.
+3.  Add your key to it in the following format:
 
     ```env
     # File: .env
-    GOOGLE_API_KEY="ВАШ_API_КЛЮЧ_ЗДЕСЬ"
+    GOOGLE_API_KEY="YOUR_API_KEY_HERE"
     ```
 
-### 6. Запуск сервера
+### 6. Running the server
 
-Теперь вы готовы запустить локальный сервер Flask.
+Now you are ready to start the local Flask server.
 
 ```bash
 python main.py
 ```
 
-Сервер будет запущен, и вы увидите примерно такое сообщение:
+The server will start, and you will see a message similar to this:
 
 ```
 * Running on http://127.0.0.1:5003
 ```
 
-### 7. Откройте приложение
+### 7. Open the application
 
-Откройте ваш браузер и перейдите по адресу [http://127.0.0.1:5003](http://127.0.0.1:5003).
+Open your browser and navigate to [http://127.0.0.1:5003](http://127.0.0.1:5003).
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 .
 ├── .gitignore
-├── main.py             # Основной файл Flask-сервера (API эндпоинты)
-├── gemini_client.py    # Логика для взаимодействия с Google Gemini API
-├── prompts.py          # Хранилище мультиязычных мастер-промптов для ИИ
-├── requirements.txt    # Список Python-зависимостей
-├── static/             # Папка со всеми файлами фронтенда
-│   ├── index.html      # Главная HTML-страница
-│   ├── style.css       # Стили
-│   ├── script.js       # Основная логика фронтенда
-│   ├── i18n.js         # Скрипт для интернационализации (переводов)
-│   └── sound.js        # Движок для звуковых эффектов
-└── README.md           # Этот файл
+├── main.py             # Main Flask server file (API endpoints)
+├── gemini_client.py    # Logic for interacting with Google Gemini API
+├── prompts.py          # Storage of multilingual master prompts for the AI
+├── requirements.txt    # List of Python dependencies
+├── static/             # Folder with all frontend files
+│   ├── index.html      # Main HTML page
+│   ├── style.css       # Styles
+│   ├── script.js       # Main frontend logic
+│   ├── i18n.js         # Script for internationalization (translations)
+│   └── sound.js        # Engine for sound effects
+└── README.md           # This file
 ```
